@@ -1,4 +1,5 @@
 using AutoMapper;
+using DPMS.IServices;
 using DPMS.Models;
 using System;
 using System.Collections.Generic;
@@ -7,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace DPMS.Service
 {
-  public class DefenceNoteService
+  public class DefenceNoteService : IDefenceNoteService
   {
     private DPMSContext db;
     private IMapper mapper;
@@ -42,19 +43,19 @@ namespace DPMS.Service
       return db.SaveChanges() > 0 ? true : false;
     }
 
-    /// <summary>
-    /// 修改答辩记录信息
-    /// </summary>
-    /// <param name="defenceNote"></param>
-    /// <returns></returns>
-    public Boolean Update(ModelsDTO.DefenceNoteDTO defenceNote)
-    {
-      Models.DefenceNote model = db.DefenceNotes.FirstOrDefault(obj => obj.DefenceId == defenceNote.DefenceId);
-      mapper.Map(defenceNote, model);//把c中的属性信息，对应到model中去
+    ///// <summary>
+    ///// 修改答辩记录信息
+    ///// </summary>
+    ///// <param name="defenceNote"></param>
+    ///// <returns></returns>
+    //public Boolean Update(ModelsDTO.DefenceNoteDTO defenceNote)
+    //{
+    //  DefenceNote model = db.DefenceNotes.FirstOrDefault(obj => obj.DefenceId == defenceNote.DefenceId);
+    //  mapper.Map(defenceNote, model);//把c中的属性信息，对应到model中去
 
-      db.DefenceNotes.Update(model);
-      return db.SaveChanges() > 0 ? true : false;
-    }
+    //  db.DefenceNotes.Update(model);
+    //  return db.SaveChanges() > 0 ? true : false;
+    //}
 
     /// <summary>
     /// 按答辩作品编号查询答辩记录信息

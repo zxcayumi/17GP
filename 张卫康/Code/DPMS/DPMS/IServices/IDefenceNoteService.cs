@@ -9,9 +9,9 @@ namespace DPMS.IServices
   {
     Boolean Add(ModelsDTO.DefenceNoteAddDTO c);
 
-    Boolean Update(ModelsDTO.DefenceNoteUpdateDTO c);
+    //Boolean Update(ModelsDTO.DefenceNoteUpdateDTO c);
 
-    Boolean Delete(Models.Defence c);
+    Boolean Delete(Models.DefenceNote c);
 
     ModelsDTO.DefenceNoteDTO Get(String defenceNoteId);
   }

@@ -15,6 +15,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.IdentityModel.Logging;
 using DPMS.Models;
 
+
 namespace DPMS
 {
 	public class Startup
@@ -37,6 +38,14 @@ namespace DPMS
 
       //注册自己写的Service服务类
       services.AddScoped<IServices.IDefenceService, Service.DefenceService>();
+      services.AddScoped<IServices.IAdminService, Service.AdminService>();
+      services.AddScoped<IServices.IDefenceNoteService, Service.DefenceNoteService>();
+      services.AddScoped<IServices.IDefenceResultService, Service.DefenceResultService>();
+      services.AddScoped<IServices.IFileService, Service.FileService>();
+      services.AddScoped<IServices.IRecorderService, Service.RecorderService>();
+      services.AddScoped<IServices.IStudentService, Service.StudentService>();
+      services.AddScoped<IServices.ITeacherService, Service.TeacherService>();
+
 
 
       services.AddHealthChecks();
@@ -49,6 +58,18 @@ namespace DPMS
           .AllowAnyHeader(); //允许任何来源的主机访问
         });
       });
+
+
+      //services.AddAuthentication("Bearer")
+      //  .AddIdentityServerAuthentication(options =>//需引入IdentityServer4.AccessTokenValidation包//.AddJwtBearer("Bearer", options =>
+      //  {
+      //    //options.Authority = "https://api.zwxt.top/AuthService";    //配置Identityserver的授权地址
+      //    options.RequireHttpsMetadata = true;           //不需要https    
+      //    options.ApiName = "NDolls.ZWXT.CourseService";  //api的name，需要和config的名称相同
+      //  });
+
+
+
     }
 
 
@@ -57,12 +78,19 @@ namespace DPMS
 		{
 			if (env.IsDevelopment())
 			{
-				app.UseDeveloperExceptionPage();
+        IdentityModelEventSource.ShowPII = true;
+        app.UseDeveloperExceptionPage();
 			}
 
 			app.UseRouting();
 
-			app.UseEndpoints(endpoints =>
+      //app.UseCors("any");
+      //app.UseHealthChecks("/Health");
+      //app.UseAuthentication();
+      //app.UseAuthorization();
+
+
+      app.UseEndpoints(endpoints =>
 			{
 				endpoints.MapGet("/", async context =>
 				{

@@ -1,11 +1,13 @@
 {
   "version": 2,
-  "dgSpecHash": "qPCSRDPIPbGYzqu+w8o0AEoGvnxVqYjot5zR173Miqg+ryZbQbzvf0aovQNQd5UkdfHdkZSzZq5FclYTq6tKIg==",
+  "dgSpecHash": "R8ZbtO22v4gimfBAAnHK2MRgSCAxuepITt+wERbGxqluRkLKtf8y5BPLrSN7mLKvBEeE5gkMNydzDGuOI6o0sg==",
   "success": true,
   "projectFilePath": "C:\\Users\\15965\\Desktop\\毕设相关\\Code\\DPMS\\DPMS\\DPMS.csproj",
   "expectedPackageFiles": [
+    "C:\\Users\\15965\\.nuget\\packages\\aliyun-net-sdk-core\\1.5.10\\aliyun-net-sdk-core.1.5.10.nupkg.sha512",
     "C:\\Users\\15965\\.nuget\\packages\\automapper\\10.1.1\\automapper.10.1.1.nupkg.sha512",
     "C:\\Users\\15965\\.nuget\\packages\\automapper.extensions.microsoft.dependencyinjection\\8.1.1\\automapper.extensions.microsoft.dependencyinjection.8.1.1.nupkg.sha512",
+    "C:\\Users\\15965\\.nuget\\packages\\consul\\1.6.1.1\\consul.1.6.1.1.nupkg.sha512",
     "C:\\Users\\15965\\.nuget\\packages\\entityframework\\6.3.0\\entityframework.6.3.0.nupkg.sha512",
     "C:\\Users\\15965\\.nuget\\packages\\humanizer.core\\2.8.26\\humanizer.core.2.8.26.nupkg.sha512",
     "C:\\Users\\15965\\.nuget\\packages\\identitymodel\\4.0.0\\identitymodel.4.0.0.nupkg.sha512",

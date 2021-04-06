@@ -15,7 +15,7 @@ namespace DPMS.Controllers
   [ApiController]
   [Route("[controller]")]
 
-  public class DefenceController
+  public class DefenceController : Controller
   {
     //CourseService类负责与数据库打交道
     private IServices.IDefenceService s;

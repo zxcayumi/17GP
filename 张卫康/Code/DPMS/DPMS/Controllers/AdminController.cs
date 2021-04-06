@@ -79,7 +79,7 @@ namespace DPMS.Controllers
     /// <param name="adminId"></param>
     /// <returns></returns>
     [HttpGet]
-    [Route("{courseID}")]
+    [Route("{adminId}")]
     public IActionResult Get(String adminId)
     {
       ModelsDTO.AdminDTO model = s.Get(adminId);

@@ -12,10 +12,10 @@ namespace DPMS.Service
   public class DefenceResultService : IDefenceResultService
   {
 
-    private DPMSDbContext db;
+    private DPMSContext db;
     private IMapper mapper;
 
-    public DefenceResultService(DPMSDbContext db, IMapper mapper)
+    public DefenceResultService(DPMSContext db, IMapper mapper)
     {
       this.db = db;
       this.mapper = mapper;

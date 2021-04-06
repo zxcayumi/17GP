@@ -13,9 +13,9 @@ namespace DPMS.ModelsDTO
       //数据由数据库运往前端为<文件DTO，文件>
       //数据由前端运往数据库为<文件，文件DTO>
 
-      //CreateMap<Models.Admin, AdminDTO>;
-      //CreateMap<AdminUpdateDTO,Models.Admin>;
-      //CreateMap<AdminAddDTO, Models.Admin>;
+      CreateMap<Models.Admin, AdminDTO>();
+      CreateMap<AdminUpdateDTO, Models.Admin>();
+      CreateMap<AdminAddDTO, Models.Admin>();
 
       CreateMap<Models.Defence, DefenceDTO>();
       CreateMap<DefenceUpdateDTO,Models.Defence>();
