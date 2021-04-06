@@ -61,15 +61,33 @@ namespace DPMS.Service
     /// <summary>
     /// 按工号查询老师信息
     /// </summary>
-    /// <param name="teacher"></param>
+    /// <param name="teachId"></param>
     /// <returns></returns>
-    public ModelsDTO.TeacherDTO Get(String teacher)
+    public ModelsDTO.TeacherDTO Get(String teachId)
     {
-      Models.Teacher stu = db.Teachers.SingleOrDefault(C => (C.TeachId == teacher));
+      Models.Teacher stu = db.Teachers.SingleOrDefault(C => (C.TeachId == teachId));
       ModelsDTO.TeacherDTO dto = new ModelsDTO.TeacherDTO();
       mapper.Map(stu, dto);
 
       return dto;
+    }
+
+    /// <summary>
+    /// 按教师姓名查询教师信息
+    /// </summary>
+    /// <param name="teachName"></param>
+    /// <returns></returns>
+    public List<TeacherDTO> GetByTeacherName(string teachID, string realName)
+    {
+      IQueryable<Teacher> list = db.Teachers.Where(c => c.TeachId == teachID);
+      if (!String.IsNullOrEmpty(realName))
+      {
+        list = list.Where(c => c.TeachId.Contains(teachID));
+      }
+      List<TeacherDTO> listDTO = new List<TeacherDTO>();
+      mapper.Map(list.ToList(), listDTO);
+
+      return listDTO;
     }
 
   }

@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "R8ZbtO22v4gimfBAAnHK2MRgSCAxuepITt+wERbGxqluRkLKtf8y5BPLrSN7mLKvBEeE5gkMNydzDGuOI6o0sg==",
+  "dgSpecHash": "+Weqr/ZpjCtpSLJ76jATYVl7Er3phAV4motmh2LXrizppr5PDvjox9Hw8TbiGY5zkLLK9PBTz4Qsc8xz/IBrqA==",
   "success": true,
-  "projectFilePath": "C:\\Users\\15965\\Desktop\\毕设相关\\Code\\DPMS\\DPMS\\DPMS.csproj",
+  "projectFilePath": "C:\\Users\\15965\\Desktop\\17GP\\张卫康\\Code\\DPMS\\DPMS\\DPMS.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\15965\\.nuget\\packages\\aliyun-net-sdk-core\\1.5.10\\aliyun-net-sdk-core.1.5.10.nupkg.sha512",
     "C:\\Users\\15965\\.nuget\\packages\\automapper\\10.1.1\\automapper.10.1.1.nupkg.sha512",

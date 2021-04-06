@@ -7644,11 +7644,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\15965\\Desktop\\毕设相关\\Code\\DPMS\\DPMS\\DPMS.csproj",
+      "projectUniqueName": "C:\\Users\\15965\\Desktop\\17GP\\张卫康\\Code\\DPMS\\DPMS\\DPMS.csproj",
       "projectName": "DPMS",
-      "projectPath": "C:\\Users\\15965\\Desktop\\毕设相关\\Code\\DPMS\\DPMS\\DPMS.csproj",
+      "projectPath": "C:\\Users\\15965\\Desktop\\17GP\\张卫康\\Code\\DPMS\\DPMS\\DPMS.csproj",
       "packagesPath": "C:\\Users\\15965\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\15965\\Desktop\\毕设相关\\Code\\DPMS\\DPMS\\obj\\",
+      "outputPath": "C:\\Users\\15965\\Desktop\\17GP\\张卫康\\Code\\DPMS\\DPMS\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
