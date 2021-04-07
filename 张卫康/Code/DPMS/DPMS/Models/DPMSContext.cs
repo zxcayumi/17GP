@@ -1,4 +1,4 @@
-using System;
+﻿using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata;
 
@@ -25,6 +25,9 @@ namespace DPMS.Models
         public virtual DbSet<Recorder> Recorders { get; set; }
         public virtual DbSet<Student> Students { get; set; }
         public virtual DbSet<Teacher> Teachers { get; set; }
+        public virtual DbSet<ViewDefenceStu> ViewDefenceStus { get; set; }
+        public virtual DbSet<ViewNoteDefence> ViewNoteDefences { get; set; }
+        public virtual DbSet<ViewStuResult> ViewStuResults { get; set; }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
@@ -143,6 +146,11 @@ namespace DPMS.Models
                 entity.Property(e => e.WorkSatus)
                     .IsRequired()
                     .HasMaxLength(2);
+
+                entity.HasOne(d => d.File)
+                    .WithMany(p => p.Defences)
+                    .HasForeignKey(d => d.FileId)
+                    .HasConstraintName("FK_Defence_File");
             });
 
             modelBuilder.Entity<DefenceNote>(entity =>
@@ -170,6 +178,10 @@ namespace DPMS.Models
 
                 entity.Property(e => e.Problem).HasMaxLength(500);
 
+                entity.Property(e => e.RecorderId)
+                    .HasMaxLength(50)
+                    .HasColumnName("RecorderID");
+
                 entity.Property(e => e.Status).HasMaxLength(50);
 
                 entity.Property(e => e.StuId)
@@ -187,6 +199,24 @@ namespace DPMS.Models
                     .HasColumnName("TeachID");
 
                 entity.Property(e => e.UpdateTime).HasColumnType("datetime");
+
+                entity.HasOne(d => d.Defence)
+                    .WithMany(p => p.DefenceNotes)
+                    .HasForeignKey(d => d.DefenceId)
+                    .OnDelete(DeleteBehavior.ClientSetNull)
+                    .HasConstraintName("FK_Defence_Note_Defence");
+
+                entity.HasOne(d => d.Stu)
+                    .WithMany(p => p.DefenceNotes)
+                    .HasForeignKey(d => d.StuId)
+                    .OnDelete(DeleteBehavior.ClientSetNull)
+                    .HasConstraintName("FK_Defence_Note_Student");
+
+                entity.HasOne(d => d.Teach)
+                    .WithMany(p => p.DefenceNotes)
+                    .HasForeignKey(d => d.TeachId)
+                    .OnDelete(DeleteBehavior.ClientSetNull)
+                    .HasConstraintName("FK_Defence_Note_Teacher");
             });
 
             modelBuilder.Entity<DefenceResult>(entity =>
@@ -205,6 +235,11 @@ namespace DPMS.Models
 
                 entity.Property(e => e.CreateTime).HasColumnType("datetime");
 
+                entity.Property(e => e.DefenceId)
+                    .IsRequired()
+                    .HasMaxLength(50)
+                    .HasColumnName("DefenceID");
+
                 entity.Property(e => e.EvaluateForStu).HasMaxLength(500);
 
                 entity.Property(e => e.EvaluateForTea).HasMaxLength(500);
@@ -216,6 +251,7 @@ namespace DPMS.Models
                 entity.Property(e => e.Status).HasMaxLength(50);
 
                 entity.Property(e => e.StuId)
+                    .IsRequired()
                     .HasMaxLength(50)
                     .HasColumnName("StuID");
 
@@ -224,10 +260,29 @@ namespace DPMS.Models
                     .HasColumnName("SystemID");
 
                 entity.Property(e => e.TeachId)
+                    .IsRequired()
                     .HasMaxLength(50)
                     .HasColumnName("TeachID");
 
                 entity.Property(e => e.UpdateTime).HasColumnType("datetime");
+
+                entity.HasOne(d => d.Defence)
+                    .WithMany(p => p.DefenceResults)
+                    .HasForeignKey(d => d.DefenceId)
+                    .OnDelete(DeleteBehavior.ClientSetNull)
+                    .HasConstraintName("FK_Defence_Result_Defence");
+
+                entity.HasOne(d => d.Stu)
+                    .WithMany(p => p.DefenceResults)
+                    .HasForeignKey(d => d.StuId)
+                    .OnDelete(DeleteBehavior.ClientSetNull)
+                    .HasConstraintName("FK_Defence_Result_Student");
+
+                entity.HasOne(d => d.Teach)
+                    .WithMany(p => p.DefenceResults)
+                    .HasForeignKey(d => d.TeachId)
+                    .OnDelete(DeleteBehavior.ClientSetNull)
+                    .HasConstraintName("FK_Defence_Result_Teacher");
             });
 
             modelBuilder.Entity<File>(entity =>
@@ -245,6 +300,10 @@ namespace DPMS.Models
                     .HasMaxLength(50)
                     .HasColumnName("DefenceID");
 
+                entity.Property(e => e.FileName)
+                    .IsRequired()
+                    .HasMaxLength(50);
+
                 entity.Property(e => e.Memo).HasMaxLength(500);
 
                 entity.Property(e => e.Modifier).HasMaxLength(50);
@@ -256,12 +315,7 @@ namespace DPMS.Models
                     .HasMaxLength(50)
                     .HasColumnName("StuID");
 
-              entity.Property(e => e.FileName)
-                    .IsRequired()
-                    .HasMaxLength(50)
-                    .HasColumnName("FileName");
-
-              entity.Property(e => e.SystemId)
+                entity.Property(e => e.SystemId)
                     .ValueGeneratedOnAdd()
                     .HasColumnName("SystemID");
 
@@ -368,6 +422,10 @@ namespace DPMS.Models
                     .IsRequired()
                     .HasMaxLength(50);
 
+                entity.Property(e => e.GuideTeacher)
+                    .IsRequired()
+                    .HasMaxLength(50);
+
                 entity.Property(e => e.HeadPic).HasMaxLength(250);
 
                 entity.Property(e => e.Major)
@@ -456,6 +514,150 @@ namespace DPMS.Models
                 entity.Property(e => e.TeacherStatus).HasMaxLength(5);
 
                 entity.Property(e => e.UpdateTime).HasColumnType("datetime");
+            });
+
+            modelBuilder.Entity<ViewDefenceStu>(entity =>
+            {
+                entity.HasNoKey();
+
+                entity.ToView("View_Defence_Stu");
+
+                entity.Property(e => e.DefenceId)
+                    .IsRequired()
+                    .HasMaxLength(50)
+                    .HasColumnName("DefenceID");
+
+                entity.Property(e => e.DefenceName)
+                    .IsRequired()
+                    .HasMaxLength(50);
+
+                entity.Property(e => e.Method).HasMaxLength(250);
+
+                entity.Property(e => e.Outline).HasMaxLength(500);
+
+                entity.Property(e => e.RealName)
+                    .IsRequired()
+                    .HasMaxLength(10);
+
+                entity.Property(e => e.StuId)
+                    .IsRequired()
+                    .HasMaxLength(50)
+                    .HasColumnName("StuID");
+
+                entity.Property(e => e.WorkSatus)
+                    .IsRequired()
+                    .HasMaxLength(2);
+            });
+
+            modelBuilder.Entity<ViewNoteDefence>(entity =>
+            {
+                entity.HasNoKey();
+
+                entity.ToView("View_Note_Defence");
+
+                entity.Property(e => e.Answer).HasMaxLength(500);
+
+                entity.Property(e => e.DefenceId)
+                    .IsRequired()
+                    .HasMaxLength(50)
+                    .HasColumnName("DefenceID");
+
+                entity.Property(e => e.DefenceName)
+                    .IsRequired()
+                    .HasMaxLength(50);
+
+                entity.Property(e => e.Expr1)
+                    .IsRequired()
+                    .HasMaxLength(10);
+
+                entity.Property(e => e.Problem).HasMaxLength(500);
+
+                entity.Property(e => e.RealName)
+                    .IsRequired()
+                    .HasMaxLength(10);
+            });
+
+            modelBuilder.Entity<ViewStuResult>(entity =>
+            {
+                entity.HasNoKey();
+
+                entity.ToView("View_Stu_Result");
+
+                entity.Property(e => e.Achievement)
+                    .IsRequired()
+                    .HasMaxLength(50);
+
+                entity.Property(e => e.DefenceId)
+                    .IsRequired()
+                    .HasMaxLength(50)
+                    .HasColumnName("DefenceID");
+
+                entity.Property(e => e.DefenceName)
+                    .IsRequired()
+                    .HasMaxLength(50);
+
+                entity.Property(e => e.Expr1)
+                    .IsRequired()
+                    .HasMaxLength(50);
+
+                entity.Property(e => e.Expr2)
+                    .IsRequired()
+                    .HasMaxLength(50);
+
+                entity.Property(e => e.Expr3)
+                    .IsRequired()
+                    .HasMaxLength(50);
+
+                entity.Property(e => e.Expr4)
+                    .IsRequired()
+                    .HasMaxLength(50);
+
+                entity.Property(e => e.Expr5)
+                    .IsRequired()
+                    .HasMaxLength(50);
+
+                entity.Property(e => e.Expr6)
+                    .IsRequired()
+                    .HasMaxLength(10);
+
+                entity.Property(e => e.Gender).HasMaxLength(1);
+
+                entity.Property(e => e.Group)
+                    .IsRequired()
+                    .HasMaxLength(50);
+
+                entity.Property(e => e.GroupNumber)
+                    .IsRequired()
+                    .HasMaxLength(50);
+
+                entity.Property(e => e.GuideTeacher)
+                    .IsRequired()
+                    .HasMaxLength(50);
+
+                entity.Property(e => e.RealName)
+                    .IsRequired()
+                    .HasMaxLength(10);
+
+                entity.Property(e => e.ResultId)
+                    .IsRequired()
+                    .HasMaxLength(50)
+                    .HasColumnName("ResultID");
+
+                entity.Property(e => e.StuId)
+                    .IsRequired()
+                    .HasMaxLength(50)
+                    .HasColumnName("StuID");
+
+                entity.Property(e => e.StudentStatus).HasMaxLength(5);
+
+                entity.Property(e => e.TeachId)
+                    .IsRequired()
+                    .HasMaxLength(50)
+                    .HasColumnName("TeachID");
+
+                entity.Property(e => e.WorkSatus)
+                    .IsRequired()
+                    .HasMaxLength(2);
             });
 
             OnModelCreatingPartial(modelBuilder);

@@ -1,58 +1,35 @@
-using System;
+﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
-using System.ComponentModel.DataAnnotations.Schema;
 
 #nullable disable
 
 namespace DPMS.Models
 {
-  [Table("Defence")]
-
-  public partial class Defence
+    public partial class Defence
     {
-    [MaxLength(50)]
-    public int SystemId { get; set; }
+        public Defence()
+        {
+            DefenceNotes = new HashSet<DefenceNote>();
+            DefenceResults = new HashSet<DefenceResult>();
+        }
 
-    [MaxLength(50)]
-    [Key]
-    public string DefenceId { get; set; }
+        public int SystemId { get; set; }
+        public string DefenceId { get; set; }
+        public string StuId { get; set; }
+        public string TeachId { get; set; }
+        public string FileId { get; set; }
+        public string DefenceName { get; set; }
+        public string Method { get; set; }
+        public string Outline { get; set; }
+        public string WorkSatus { get; set; }
+        public string Memo { get; set; }
+        public string Status { get; set; }
+        public DateTime? CreateTime { get; set; }
+        public DateTime? UpdateTime { get; set; }
+        public string Modifier { get; set; }
 
-    [MaxLength(50)]
-    public string StuId { get; set; }
-
-    [MaxLength(50)]
-    public string TeachId { get; set; }
-
-    [MaxLength(50)]
-    public string DefenceName { get; set; }
-
-    [MaxLength(250)]
-    public string Method { get; set; }
-
-    [MaxLength(500)]
-    public string Outline { get; set; }
-
-    [MaxLength(50)]
-    public string FileId { get; set; }
-
-    [MaxLength(2)]
-    public string WorkSatus { get; set; }
-
-
-
-
-    [MaxLength(500)]
-    public string Memo { get; set; }
-
-    [MaxLength(50)]
-    public string Status { get; set; }
-
-    public DateTime? CreateTime { get; set; }
-
-    public DateTime? UpdateTime { get; set; }
-
-    [MaxLength(50)]
-    public string Modifier { get; set; }
+        public virtual File File { get; set; }
+        public virtual ICollection<DefenceNote> DefenceNotes { get; set; }
+        public virtual ICollection<DefenceResult> DefenceResults { get; set; }
     }
 }
