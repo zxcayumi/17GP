@@ -1,3 +1,4 @@
+using DPMS.ModelsDTO;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -15,5 +16,7 @@ namespace DPMS.IServices
     Boolean Delete(Models.Recorder c);
 
     ModelsDTO.RecorderDTO Get(String Recorder);
+
+    List<RecorderDTO> GetByRecorderName(string realName);
   }
 }

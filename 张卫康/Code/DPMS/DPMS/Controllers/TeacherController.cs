@@ -1,4 +1,5 @@
 using AutoMapper;
+using DPMS.ModelsDTO;
 using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Collections.Generic;
@@ -85,5 +86,27 @@ namespace DPMS.Controllers
       else
         return NotFound();//404
     }
+
+    /// <summary>
+    /// 按教师姓名查询教师信息
+    /// </summary>
+    /// <param name="realName"></param>
+    /// <returns></returns>
+    [HttpGet]
+    [Route("TAll")]
+    public IActionResult GetAll([FromQuery] String realName)
+    {
+      try
+      {
+        List<TeacherDTO> models = s.GetByTeacherName(realName);
+        return Ok(models);
+      }
+      catch (Exception e)
+      {
+        return BadRequest(e);
+      }
+    }
+
+
   }
 }

@@ -74,7 +74,37 @@ namespace DPMS.Service
     }
 
 
+    /// <summary>
+    /// 按教师编号查询答辩结果信息（一个教师可以为多个学生打分）
+    /// </summary>
+    /// <param name="teachId"></param>
+    /// <returns></returns>
+    public List<DefenceResultDTO> GetByTeachId(string teachId)
+    {
+      IQueryable<DefenceResult> list = db.DefenceResults.Where(c => c.TeachId != null);
+      if (!String.IsNullOrEmpty(teachId))
+      {
+        list = list.Where(c => c.TeachId.Contains(teachId));
+      }
+      List<DefenceResultDTO> listDTO = new List<DefenceResultDTO>();
+      mapper.Map(list.ToList(), listDTO);
 
+      return listDTO;
+    }
+
+    /// <summary>
+    /// 按学生学号查询答辩结果信息(一个学生一个结果信息）
+    /// </summary>
+    /// <param name="stuId"></param>
+    /// <returns></returns>
+    public ModelsDTO.DefenceResultDTO GetByStuId(String stuId)
+    {
+      Models.DefenceResult defenceResult = db.DefenceResults.SingleOrDefault(C => (C.StuId == stuId));
+      ModelsDTO.DefenceResultDTO dto = new ModelsDTO.DefenceResultDTO();
+      mapper.Map(defenceResult, dto);
+
+      return dto;
+    }
 
   }
 }

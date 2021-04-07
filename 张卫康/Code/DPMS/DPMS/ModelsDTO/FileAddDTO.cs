@@ -19,6 +19,9 @@ namespace DPMS.ModelsDTO
     public string FileId { get; set; }
 
     [MaxLength(50)]
+    public string FileName { get; set; }
+
+    [MaxLength(50)]
     public string StuId { get; set; }
 
     [MaxLength(50)]

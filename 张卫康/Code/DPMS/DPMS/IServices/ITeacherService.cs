@@ -1,3 +1,4 @@
+using DPMS.ModelsDTO;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -14,5 +15,9 @@ namespace DPMS.IServices
     Boolean Delete(Models.Teacher c);
 
     ModelsDTO.TeacherDTO Get(String teacher);
+
+    List<TeacherDTO> GetByTeacherName(string realName);
+
+
   }
 }

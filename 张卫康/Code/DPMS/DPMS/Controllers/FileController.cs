@@ -1,9 +1,8 @@
 using AutoMapper;
+using DPMS.ModelsDTO;
 using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 
 namespace DPMS.Controllers
 {
@@ -71,5 +70,45 @@ namespace DPMS.Controllers
       else
         return NotFound();//404
     }
+
+
+    /// <summary>
+    /// 按文件名查询文件信息
+    /// </summary>
+    /// <param name="fileName"></param>
+    /// <returns></returns>
+    [HttpGet]
+    [Route("FAll")]
+    public IActionResult GetAll([FromQuery] String fileName)
+    {
+      try
+      {
+        List<FileDTO> models = s.GetByFileName(fileName);
+        return Ok(models);
+      }
+      catch (Exception e)
+      {
+        return BadRequest(e);
+      }
+    }
+
+
+    /// <summary>
+    /// 查询学生学号查询文件信息
+    /// </summary>
+    /// <param name="stuId"></param>
+    /// <returns></returns>
+    [HttpGet]
+    [Route("Student/{stuId}")]
+    public IActionResult GetByStuId(String stuId)
+    {
+      ModelsDTO.FileDTO model = s.GetByStuId(stuId);
+
+      if (model != null)
+        return Ok(model);//200
+      else
+        return NotFound();//404
+    }
+
   }
 }

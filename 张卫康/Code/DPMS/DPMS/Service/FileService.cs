@@ -45,13 +45,46 @@ namespace DPMS.Service
     }
 
     /// <summary>
-    /// 按文件编号查询文件信息
+    /// 按文件编号查询文件信息（一个编号一个文件）
     /// </summary>
     /// <param name="File"></param>
     /// <returns></returns>
     public ModelsDTO.FileDTO Get(String File)
     {
       Models.File file = db.Files.SingleOrDefault(C => (C.FileId == File));
+      ModelsDTO.FileDTO dto = new ModelsDTO.FileDTO();
+      mapper.Map(file, dto);
+
+      return dto;
+    }
+
+    /// <summary>
+    /// 按文件名称查询文件信息（一个名称一个文件）
+    /// </summary>
+    /// <param name="fileName"></param>
+    /// <returns></returns>
+    public List<FileDTO> GetByFileName(string fileName)
+    {
+      IQueryable<File> list = db.Files.Where(c => c.FileName != null);
+      if (!String.IsNullOrEmpty(fileName))
+      {
+        list = list.Where(c => c.FileName.Contains(fileName));
+      }
+      List<FileDTO> listDTO = new List<FileDTO>();
+      mapper.Map(list.ToList(), listDTO);
+
+      return listDTO;
+    }
+
+
+    /// <summary>
+    /// 按学生学号查询文件信息（一个学号一个文件）
+    /// </summary>
+    /// <param name="stuId"></param>
+    /// <returns></returns>
+    public FileDTO GetByStuId(String stuId)
+    {
+      Models.File file = db.Files.SingleOrDefault(C => (C.FileId == stuId));
       ModelsDTO.FileDTO dto = new ModelsDTO.FileDTO();
       mapper.Map(file, dto);
 

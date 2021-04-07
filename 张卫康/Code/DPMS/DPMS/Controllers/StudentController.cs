@@ -1,4 +1,5 @@
 using AutoMapper;
+using DPMS.ModelsDTO;
 using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Collections.Generic;
@@ -84,6 +85,26 @@ namespace DPMS.Controllers
         return Ok(model);//200
       else
         return NotFound();//404
+    }
+
+    /// <summary>
+    /// 按学生姓名查询学生信息
+    /// </summary>
+    /// <param name="realName"></param>
+    /// <returns></returns>
+    [HttpGet]
+    [Route("SAll")]
+    public IActionResult GetAll([FromQuery] String realName)
+    {
+      try
+      {
+        List<StudentDTO> models = s.GetByStudentName(realName);
+        return Ok(models);
+      }
+      catch (Exception e)
+      {
+        return BadRequest(e);
+      }
     }
   }
 }

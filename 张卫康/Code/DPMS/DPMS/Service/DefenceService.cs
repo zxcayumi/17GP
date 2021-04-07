@@ -59,7 +59,7 @@ namespace DPMS.Service
     }
 
     /// <summary>
-    /// 按答辩作品编号查询答辩作品信息
+    /// 按答辩作品编号查询答辩作品信息(一个编号查询一个信息）
     /// </summary>
     /// <param name="defence"></param>
     /// <returns></returns>

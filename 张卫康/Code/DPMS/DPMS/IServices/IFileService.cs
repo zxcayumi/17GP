@@ -1,3 +1,4 @@
+using DPMS.ModelsDTO;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -12,5 +13,9 @@ namespace DPMS.IServices
     Boolean Delete(Models.File c);
 
     ModelsDTO.FileDTO Get(String File);
+
+    List<FileDTO> GetByFileName(string fileName);
+
+    ModelsDTO.FileDTO GetByStuId(String stuId);
   }
 }

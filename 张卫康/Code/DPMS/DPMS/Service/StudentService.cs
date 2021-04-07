@@ -72,5 +72,24 @@ namespace DPMS.Service
 
       return dto;
     }
+
+    /// <summary>
+    /// 按学生姓名查询学生信息
+    /// </summary>
+    /// <param name="realName"></param>
+    /// <returns></returns>
+    public List<StudentDTO> GetByStudentName(string realName)
+    {
+      IQueryable<Student> list = db.Students.Where(c => c.StuId != null);
+      if (!String.IsNullOrEmpty(realName))
+      {
+        list = list.Where(c => c.RealName.Contains(realName));
+      }
+      List<StudentDTO> listDTO = new List<StudentDTO>();
+      mapper.Map(list.ToList(), listDTO);
+
+      return listDTO;
+    }
+
   }
 }

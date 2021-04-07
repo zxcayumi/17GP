@@ -58,7 +58,7 @@ namespace DPMS.Service
     }
 
     /// <summary>
-    /// 按答辩作品编号查询管理员信息
+    /// 按管理员编号查询管理员信息
     /// </summary>
     /// <param name="admin"></param>
     /// <returns></returns>

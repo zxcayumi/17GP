@@ -39,19 +39,19 @@ namespace DPMS.Controllers
       }
     }
 
-    ///// <summary>
-    ///// 更改答辩记录信息
-    ///// </summary>
-    ///// <param name="model"></param>
-    ///// <returns></returns>
-    //[HttpPut]
-    //public IActionResult Update(ModelsDTO.DefenceNoteUpdateDTO model)
-    //{
-    //  if (s.Update(model))
-    //    return Ok();
-    //  else
-    //    return BadRequest();
-    //}
+    /// <summary>
+    /// 更改答辩记录信息
+    /// </summary>
+    /// <param name="model"></param>
+    /// <returns></returns>
+    [HttpPut]
+    public IActionResult Update(ModelsDTO.DefenceNoteUpdateDTO model)
+    {
+      if (s.Update(model))
+        return Ok();
+      else
+        return BadRequest();
+    }
 
     /// <summary>
     /// 删除答辩记录信息

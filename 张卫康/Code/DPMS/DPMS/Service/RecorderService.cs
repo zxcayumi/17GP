@@ -72,5 +72,24 @@ namespace DPMS.Service
 
       return dto;
     }
+
+    /// <summary>
+    /// 按记录员姓名查询记录员信息
+    /// </summary>
+    /// <param name="realName"></param>
+    /// <returns></returns>
+    public List<RecorderDTO> GetByRecorderName(string realName)
+    {
+      IQueryable<Recorder> list = db.Recorders.Where(c => c.RecorderId != null);
+      if (!String.IsNullOrEmpty(realName))
+      {
+        list = list.Where(c => c.RealName.Contains(realName));
+      }
+      List<RecorderDTO> listDTO = new List<RecorderDTO>();
+      mapper.Map(list.ToList(), listDTO);
+
+      return listDTO;
+    }
+
   }
 }

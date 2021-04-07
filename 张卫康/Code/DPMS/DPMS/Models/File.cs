@@ -19,6 +19,9 @@ namespace DPMS.Models
     public string FileId { get; set; }
 
     [MaxLength(50)]
+    public string FileName { get; set; }
+
+    [MaxLength(50)]
     public string StuId { get; set; }
 
     [MaxLength(50)]

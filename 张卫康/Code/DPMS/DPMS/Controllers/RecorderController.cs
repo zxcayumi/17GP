@@ -1,4 +1,5 @@
 using AutoMapper;
+using DPMS.ModelsDTO;
 using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Collections.Generic;
@@ -87,5 +88,27 @@ namespace DPMS.Controllers
       else
         return NotFound();//404
     }
+
+    /// <summary>
+    /// 按记录员姓名查询记录员信息
+    /// </summary>
+    /// <param name="realName"></param>
+    /// <returns></returns>
+    [HttpGet]
+    [Route("RAll")]
+    public IActionResult GetAll([FromQuery] String realName)
+    {
+      try
+      {
+        List<RecorderDTO> models = s.GetByRecorderName(realName);
+        return Ok(models);
+      }
+      catch (Exception e)
+      {
+        return BadRequest(e);
+      }
+    }
+
+
   }
 }

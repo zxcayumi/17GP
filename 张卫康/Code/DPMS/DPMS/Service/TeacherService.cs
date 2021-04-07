@@ -75,14 +75,14 @@ namespace DPMS.Service
     /// <summary>
     /// 按教师姓名查询教师信息
     /// </summary>
-    /// <param name="teachName"></param>
+    /// <param name="realName"></param>
     /// <returns></returns>
-    public List<TeacherDTO> GetByTeacherName(string teachID, string realName)
+    public List<TeacherDTO> GetByTeacherName(string realName)
     {
-      IQueryable<Teacher> list = db.Teachers.Where(c => c.TeachId == teachID);
+      IQueryable<Teacher> list = db.Teachers.Where(c => c.TeachId != null);
       if (!String.IsNullOrEmpty(realName))
       {
-        list = list.Where(c => c.TeachId.Contains(teachID));
+        list = list.Where(c => c.RealName.Contains(realName));
       }
       List<TeacherDTO> listDTO = new List<TeacherDTO>();
       mapper.Map(list.ToList(), listDTO);

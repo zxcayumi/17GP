@@ -1,3 +1,4 @@
+using DPMS.ModelsDTO;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -14,5 +15,9 @@ namespace DPMS.IServices
     Boolean Delete(Models.DefenceResult c);
 
     ModelsDTO.DefenceResultDTO Get(String DefenceResult);
+
+    List<DefenceResultDTO> GetByTeachId(string teachId);
+
+    ModelsDTO.DefenceResultDTO GetByStuId(String stuId);
   }
 }

@@ -256,7 +256,12 @@ namespace DPMS.Models
                     .HasMaxLength(50)
                     .HasColumnName("StuID");
 
-                entity.Property(e => e.SystemId)
+              entity.Property(e => e.FileName)
+                    .IsRequired()
+                    .HasMaxLength(50)
+                    .HasColumnName("FileName");
+
+              entity.Property(e => e.SystemId)
                     .ValueGeneratedOnAdd()
                     .HasColumnName("SystemID");
 

@@ -4,6 +4,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using DPMS.ModelsDTO;
 
 namespace DPMS.Controllers
 {
@@ -81,6 +82,44 @@ namespace DPMS.Controllers
     public IActionResult Get(String resultId)
     {
       ModelsDTO.DefenceResultDTO model = s.Get(resultId);
+
+      if (model != null)
+        return Ok(model);//200
+      else
+        return NotFound();//404
+    }
+
+
+    /// <summary>
+    /// 按教师编号查询答辩结果信息（一个教师可以为多个学生打分）
+    /// </summary>
+    /// <param name="teachId"></param>
+    /// <returns></returns>
+    [HttpGet]
+    [Route("DAll")]
+    public IActionResult GetAll([FromQuery] String teachId)
+    {
+      try
+      {
+        List<DefenceResultDTO> models = s.GetByTeachId(teachId);
+        return Ok(models);
+      }
+      catch (Exception e)
+      {
+        return BadRequest(e);
+      }
+    }
+
+    /// <summary>
+    /// 查询学生学号查询文件信息(一个学号一条信息）
+    /// </summary>
+    /// <param name="stuId"></param>
+    /// <returns></returns>
+    [HttpGet]
+    [Route("Result/{stuId}")]
+    public IActionResult GetByStuId(String stuId)
+    {
+      ModelsDTO.DefenceResultDTO model = s.GetByStuId(stuId);
 
       if (model != null)
         return Ok(model);//200
