@@ -10,7 +10,7 @@ using Microsoft.AspNetCore.Authentication;
 namespace DPMS.Controllers
 {
   [ApiController]
-  [Route("[controller]")]
+  [Route("Admin")]
   public class AdminController : Controller
   {
     private IServices.IAdminService s;
@@ -91,7 +91,11 @@ namespace DPMS.Controllers
     }
 
 
-
+    //[HttpGet]
+    //public IActionResult Get()
+    //{
+    //  return Ok("Test");
+    //}
 
   }
 }
