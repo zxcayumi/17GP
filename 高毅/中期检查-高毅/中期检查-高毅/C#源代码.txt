@@ -1,0 +1,81 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using System.Data.SqlClient;
+
+namespace ADO.Net
+{
+    class _1Connection
+    {
+        public static void Main(string[] args)
+        {
+            Server=.;
+            string conStr= "Server=.;database=***;Integrated Security=True";
+            string conStr = "Server=;user=sa;pwd=***;database=";
+            SqlConnection mySqlCon = new SqlConnection(conStr);
+
+
+            mySqlCon.Open();
+            Console.WriteLine("数据库已经被成功打开了");
+
+            mySqlCon.Close();//虽然C#有垃圾回收机制(GC)，但是在使用完数据库最好自己关闭来提高性能
+            Console.WriteLine("数据库已经被成功关闭");
+            try
+            {
+                mySqlCon.Open();
+                Console.WriteLine("数据库已经被成功打开了");
+            }
+            catch
+            {
+
+            }
+            finally
+            {
+                mySqlCon.Close();
+                Console.WriteLine("数据库已经被成功关闭");
+            }
+        }
+
+    }
+}
+
+
+
+namespace ADO.Net
+{
+    class _2Command
+    {
+        public static void Main(string[] Args)
+        {
+            string conStr = "Server=;user=sa;pwd=***;database=";
+            SqlConnection mySqlCon = new SqlConnection(conStr);
+            try
+            {
+                //创建Command对象
+                mySqlCon.Open();
+                string sql = "select * from EMP_Lanbo1";//sql语句
+                SqlCommand mySqlcom = new SqlCommand(sql, mySqlCon);
+
+                mySqlcom.CommandTimeout = 2;
+                Console.WriteLine("创建Command对象成功");
+
+                
+                 mySqlCon.Open();
+                string sqlNoQuery = "insert Student values('姓名','男','***','论文')";
+                SqlCommand mySqlCom = new SqlCommand(sqlNoQuery, mySqlCon);
+                mySqlCom.ExecuteNonQuery();
+                Console.WriteLine("修改数据成功");
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e.Message.ToString());
+            }
+            finally
+            {
+                mySqlCon.Close();
+            }
+        }
+    }
+}
