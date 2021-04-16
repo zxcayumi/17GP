@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 namespace DPMS.Controllers
 {
   [ApiController]
-  [Route("ViewNoteDefence")]
+  [Route("Controller")]
   public class ViewNoteDefenceController
   {
   }

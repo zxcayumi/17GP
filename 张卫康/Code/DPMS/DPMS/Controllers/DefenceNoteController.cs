@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 namespace DPMS.Controllers
 {
   [ApiController]
-  [Route("[controller]")]
+  [Route("[Controller]")]
   public class DefenceNoteController : Controller
   {
     private IServices.IDefenceNoteService s;

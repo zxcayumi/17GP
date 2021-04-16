@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 namespace DPMS.Controllers
 {
   [ApiController]
-  [Route("ViewStuResult")]
+  [Route("Controller")]
   public class ViewStuResultController
   {
   }

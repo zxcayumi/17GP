@@ -6,6 +6,8 @@ using System.Collections.Generic;
 
 namespace DPMS.Controllers
 {
+  [ApiController]
+  [Route("[Controller]")]
   public class FileController : Controller
   {
     private IServices.IFileService s;

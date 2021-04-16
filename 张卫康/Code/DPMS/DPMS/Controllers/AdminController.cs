@@ -10,7 +10,7 @@ using Microsoft.AspNetCore.Authentication;
 namespace DPMS.Controllers
 {
   [ApiController]
-  [Route("Admin")]
+  [Route("Admin")]  //  [Route("Admin")]  和  [Route("[Controller]")]  有什么区别？
   public class AdminController : Controller
   {
     private IServices.IAdminService s;
@@ -89,13 +89,6 @@ namespace DPMS.Controllers
       else
         return NotFound();//404
     }
-
-
-    //[HttpGet]
-    //public IActionResult Get()
-    //{
-    //  return Ok("Test");
-    //}
 
   }
 }

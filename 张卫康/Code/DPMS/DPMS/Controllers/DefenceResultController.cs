@@ -9,7 +9,7 @@ using DPMS.ModelsDTO;
 namespace DPMS.Controllers
 {
   [ApiController]
-  [Route("[controller]")]
+  [Route("[Controller]")]
   public class DefenceResultController : Controller 
   {
     private IServices.IDefenceResultService s;

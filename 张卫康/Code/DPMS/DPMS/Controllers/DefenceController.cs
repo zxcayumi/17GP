@@ -13,7 +13,7 @@ using System.Text.Json;
 namespace DPMS.Controllers
 {
   [ApiController]
-  [Route("[controller]")]
+  [Route("[Controller]")]
 
   public class DefenceController : Controller
   {
@@ -28,6 +28,40 @@ namespace DPMS.Controllers
     }
 
 
+    //[HttpPost]
+    //public IActionResult Create(ModelsDTO.DefenceAddDTO model)
+    //{
+    //  try
+    //  {
+    //    s.Add(model);
+    //    return Ok();
+    //  }
+    //  catch (Exception ex)
+    //  {
+    //    return BadRequest(ex.ToString());
+    //  }
+    //}
+
+    //[HttpDelete]
+    //[Route("{defenceId}")]
+    //public IActionResult Delete(String defenceId)
+    //{
+    //  Models.Defence model = new Models.Defence();
+    //  model.DefenceId = defenceId;
+
+    //  if (s.Delete(model))
+    //    return Ok();
+    //  else
+    //    return BadRequest();
+    //}
+
+
+
+    /// <summary>
+    /// 添加答辩作品信息
+    /// </summary>
+    /// <param name="model"></param>
+    /// <returns></returns>
     [HttpPost]
     public IActionResult Create(ModelsDTO.DefenceAddDTO model)
     {
@@ -42,12 +76,31 @@ namespace DPMS.Controllers
       }
     }
 
+    /// <summary>
+    /// 更改答辩作品信息
+    /// </summary>
+    /// <param name="model"></param>
+    /// <returns></returns>
+    [HttpPut]
+    public IActionResult Update(ModelsDTO.DefenceUpdateDTO model)
+    {
+      if (s.Update(model))
+        return Ok();
+      else
+        return BadRequest();
+    }
+
+    /// <summary>
+    /// 删除答辩作品信息
+    /// </summary>
+    /// <param name="denfenceId"></param>
+    /// <returns></returns>
     [HttpDelete]
-    [Route("{defenceId}")]
-    public IActionResult Delete(String defenceId)
+    [Route("{denfenceId}")]
+    public IActionResult Delete(String denfenceId)
     {
       Models.Defence model = new Models.Defence();
-      model.DefenceId = defenceId;
+      model.DefenceId = denfenceId;
 
       if (s.Delete(model))
         return Ok();
@@ -55,5 +108,21 @@ namespace DPMS.Controllers
         return BadRequest();
     }
 
+    /// <summary>
+    /// 查询答辩作品信息信息
+    /// </summary>
+    /// <param name="denfenceId"></param>
+    /// <returns></returns>
+    [HttpGet]
+    [Route("{denfenceId}")]
+    public IActionResult Get(String denfenceId)
+    {
+      ModelsDTO.DefenceDTO model = s.Get(denfenceId);
+
+      if (model != null)
+        return Ok(model);//200
+      else
+        return NotFound();//404
+    }
   }
 }
