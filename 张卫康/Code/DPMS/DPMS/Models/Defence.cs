@@ -1,19 +1,24 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 #nullable disable
 
 namespace DPMS.Models
 {
-    public partial class Defence
+  [Table("Defence")]
+  public partial class Defence
     {
-        public Defence()
+    public Defence()
         {
             DefenceNotes = new HashSet<DefenceNote>();
             DefenceResults = new HashSet<DefenceResult>();
         }
 
         public int SystemId { get; set; }
+
+        [Key]
         public string DefenceId { get; set; }
         public string StuId { get; set; }
         public string TeachId { get; set; }

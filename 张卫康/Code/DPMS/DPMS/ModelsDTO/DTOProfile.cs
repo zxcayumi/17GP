@@ -48,6 +48,11 @@ namespace DPMS.ModelsDTO
       CreateMap<Models.Defence, DefenceDTO>();
       CreateMap<DefenceUpdateDTO, Models.Defence>();
       CreateMap<DefenceAddDTO, Models.Defence>();
+
+      CreateMap<Models.ViewDefenceStu, ViewDefenceStuDTO>();
+      CreateMap<Models.ViewNoteDefence, ViewNoteDefenceDTO>();
+      CreateMap<Models.ViewStuResult, ViewStuResultDTO>();
+
     }
   }
 }

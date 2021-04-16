@@ -1,11 +1,13 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations.Schema;
 
 #nullable disable
 
 namespace DPMS.Models
 {
-    public partial class Recorder
+  [Table("Recorder")]
+  public partial class Recorder
     {
         public int SystemId { get; set; }
         public string RecorderId { get; set; }

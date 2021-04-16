@@ -1,11 +1,14 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations.Schema;
 
 #nullable disable
 
 namespace DPMS.Models
 {
-    public partial class Student
+  [Table("Student")]
+
+  public partial class Student
     {
         public Student()
         {

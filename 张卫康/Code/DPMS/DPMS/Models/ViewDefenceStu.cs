@@ -1,11 +1,14 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations.Schema;
 
 #nullable disable
 
 namespace DPMS.Models
 {
-    public partial class ViewDefenceStu
+  [Table("ViewDefenceStu")]
+
+  public partial class ViewDefenceStu
     {
         public string DefenceId { get; set; }
         public string DefenceName { get; set; }
