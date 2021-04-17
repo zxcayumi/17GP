@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata;
 
@@ -92,9 +92,6 @@ namespace DPMS.Models
 
                 entity.Property(e => e.Status).HasMaxLength(50);
 
-                entity.Property(e => e.SystemId)
-                    .ValueGeneratedOnAdd()
-                    .HasColumnName("SystemID");
 
                 entity.Property(e => e.UpdateTime).HasColumnType("datetime");
             });
@@ -132,9 +129,6 @@ namespace DPMS.Models
                     .HasMaxLength(50)
                     .HasColumnName("StuID");
 
-                entity.Property(e => e.SystemId)
-                    .ValueGeneratedOnAdd()
-                    .HasColumnName("SystemID");
 
                 entity.Property(e => e.TeachId)
                     .IsRequired()
@@ -189,9 +183,6 @@ namespace DPMS.Models
                     .HasMaxLength(50)
                     .HasColumnName("StuID");
 
-                entity.Property(e => e.SystemId)
-                    .ValueGeneratedOnAdd()
-                    .HasColumnName("SystemID");
 
                 entity.Property(e => e.TeachId)
                     .IsRequired()
@@ -255,9 +246,6 @@ namespace DPMS.Models
                     .HasMaxLength(50)
                     .HasColumnName("StuID");
 
-                entity.Property(e => e.SystemId)
-                    .ValueGeneratedOnAdd()
-                    .HasColumnName("SystemID");
 
                 entity.Property(e => e.TeachId)
                     .IsRequired()
@@ -315,9 +303,6 @@ namespace DPMS.Models
                     .HasMaxLength(50)
                     .HasColumnName("StuID");
 
-                entity.Property(e => e.SystemId)
-                    .ValueGeneratedOnAdd()
-                    .HasColumnName("SystemID");
 
                 entity.Property(e => e.UpdateTime).HasColumnType("datetime");
 
@@ -371,9 +356,6 @@ namespace DPMS.Models
 
                 entity.Property(e => e.Status).HasMaxLength(50);
 
-                entity.Property(e => e.SystemId)
-                    .ValueGeneratedOnAdd()
-                    .HasColumnName("SystemID");
 
                 entity.Property(e => e.UpdateTime).HasColumnType("datetime");
 
@@ -450,9 +432,6 @@ namespace DPMS.Models
 
                 entity.Property(e => e.StudentStatus).HasMaxLength(5);
 
-                entity.Property(e => e.SystemId)
-                    .ValueGeneratedOnAdd()
-                    .HasColumnName("SystemID");
 
                 entity.Property(e => e.UpdateTime).HasColumnType("datetime");
             });
@@ -507,9 +486,6 @@ namespace DPMS.Models
 
                 entity.Property(e => e.Status).HasMaxLength(5);
 
-                entity.Property(e => e.SystemId)
-                    .ValueGeneratedOnAdd()
-                    .HasColumnName("SystemID");
 
                 entity.Property(e => e.TeacherStatus).HasMaxLength(5);
 

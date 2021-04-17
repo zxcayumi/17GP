@@ -13,7 +13,7 @@ using System.Text.Json;
 namespace DPMS.Controllers
 {
   [ApiController]
-  [Route("[Controller]")]
+  [Route("Defence")]
 
   public class DefenceController : Controller
   {

@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 namespace DPMS.Controllers
 {
   [ApiController]
-  [Route("[Controller]")]
+  [Route("Recorder")]
   public class RecorderController : Controller
   {
     private IServices.IRecorderService s;

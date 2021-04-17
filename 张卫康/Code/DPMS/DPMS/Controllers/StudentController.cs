@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 namespace DPMS.Controllers
 {
   [ApiController]
-  [Route("[Controller]")]
+  [Route("Student")]
   public class StudentController : Controller
   {
     private IServices.IStudentService s;

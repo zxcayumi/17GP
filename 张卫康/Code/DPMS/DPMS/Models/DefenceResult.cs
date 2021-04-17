@@ -10,8 +10,6 @@ namespace DPMS.Models
   [Table("DefenceResult")]
   public partial class DefenceResult
     {
-        public int SystemId { get; set; }
-
         [Key]
         public string ResultId { get; set; }
         public string DefenceId { get; set; }

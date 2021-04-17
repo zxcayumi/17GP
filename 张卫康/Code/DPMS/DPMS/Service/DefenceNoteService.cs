@@ -64,7 +64,7 @@ namespace DPMS.Service
     /// <returns></returns>
     public ModelsDTO.DefenceNoteDTO Get(String DefenceNoteId)
     {
-      Models.DefenceNote defence = db.DefenceNotes.SingleOrDefault(C => (C.DefenceId == DefenceNoteId));
+      Models.DefenceNote defence = db.DefenceNotes.SingleOrDefault(C => (C.NoteId == DefenceNoteId));
       ModelsDTO.DefenceNoteDTO dto = new ModelsDTO.DefenceNoteDTO();
       mapper.Map(defence, dto);
 
