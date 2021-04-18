@@ -27,36 +27,6 @@ namespace DPMS.Controllers
       this.mapper = mapper;
     }
 
-
-    //[HttpPost]
-    //public IActionResult Create(ModelsDTO.DefenceAddDTO model)
-    //{
-    //  try
-    //  {
-    //    s.Add(model);
-    //    return Ok();
-    //  }
-    //  catch (Exception ex)
-    //  {
-    //    return BadRequest(ex.ToString());
-    //  }
-    //}
-
-    //[HttpDelete]
-    //[Route("{defenceId}")]
-    //public IActionResult Delete(String defenceId)
-    //{
-    //  Models.Defence model = new Models.Defence();
-    //  model.DefenceId = defenceId;
-
-    //  if (s.Delete(model))
-    //    return Ok();
-    //  else
-    //    return BadRequest();
-    //}
-
-
-
     /// <summary>
     /// 添加答辩作品信息
     /// </summary>
@@ -109,7 +79,7 @@ namespace DPMS.Controllers
     }
 
     /// <summary>
-    /// 查询答辩作品信息信息
+    /// 按答辩作品编号查询答辩作品信息信息
     /// </summary>
     /// <param name="denfenceId"></param>
     /// <returns></returns>
@@ -124,5 +94,34 @@ namespace DPMS.Controllers
       else
         return NotFound();//404
     }
+
+
+    /// <summary>
+    /// 按答辩作品名称查询答辩作品信息信息
+    /// </summary>
+    /// <param name="denfenceId"></param>
+    /// <returns></returns>
+
+
+
+    /// <summary>
+    /// 按指导教师名称查询答辩作品信息信息
+    /// </summary>
+    /// <param name="denfenceId"></param>
+    /// <returns></returns>
+
+
+
+
+    /// <summary>
+    /// 按评阅教师姓名查询答辩作品信息信息
+    /// </summary>
+    /// <param name="denfenceId"></param>
+    /// <returns></returns>
+    ///
+
+
+
+
   }
 }

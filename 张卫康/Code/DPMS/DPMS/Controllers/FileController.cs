@@ -104,7 +104,7 @@ namespace DPMS.Controllers
     [Route("Student/{stuId}")]
     public IActionResult GetByStuId(String stuId)
     {
-      ModelsDTO.FileDTO model = s.GetByStuId(stuId);
+      List<FileDTO> model = s.GetByStuId(stuId);
 
       if (model != null)
         return Ok(model);//200

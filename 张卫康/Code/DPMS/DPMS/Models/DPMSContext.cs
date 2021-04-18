@@ -498,7 +498,7 @@ namespace DPMS.Models
 
                 entity.ToView("View_Defence_Stu");
 
-                entity.Property(e => e.DefenceId)
+                entity.Property(e => e.DefenceID)
                     .IsRequired()
                     .HasMaxLength(50)
                     .HasColumnName("DefenceID");
@@ -523,6 +523,12 @@ namespace DPMS.Models
                 entity.Property(e => e.WorkSatus)
                     .IsRequired()
                     .HasMaxLength(2);
+
+              
+              entity.Property(e => e.GuideTeacher)
+                    .IsRequired()
+                    .HasMaxLength(50);
+
             });
 
             modelBuilder.Entity<ViewNoteDefence>(entity =>

@@ -47,8 +47,9 @@ namespace DPMS
       services.AddTransient<IServices.IRecorderService, Service.RecorderService>();
       services.AddTransient<IServices.IStudentService, Service.StudentService>();
       services.AddTransient<IServices.ITeacherService, Service.TeacherService>();
-      services.AddTransient<IServices.IDefenceNoteService, Service.DefenceNoteService>();
-      services.AddTransient<IServices.IDefenceNoteService, Service.DefenceNoteService>();
+      services.AddTransient<IServices.IViewDefenceStuService, Service.ViewDefenceStuService>();
+      services.AddTransient<IServices.IViewNoteDefenceService, Service.ViewNoteDefenceService>();
+      services.AddTransient<IServices.IViewStuResultService, Service.ViewStuResultService>();
 
 
 

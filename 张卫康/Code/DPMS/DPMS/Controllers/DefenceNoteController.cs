@@ -87,5 +87,24 @@ namespace DPMS.Controllers
       else
         return NotFound();//404
     }
+
+
+    /// <summary>
+    /// 按学生姓名查询答辩记录信息
+    /// </summary>
+    /// <param name="noteId"></param>
+    /// <returns></returns>
+
+
+
+    /// <summary>
+    /// 按小组名称查询答辩记录信息
+    /// </summary>
+    /// <param name="noteId"></param>
+    /// <returns></returns>
+
+
+
+
   }
 }

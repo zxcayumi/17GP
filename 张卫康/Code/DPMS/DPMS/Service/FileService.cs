@@ -82,13 +82,17 @@ namespace DPMS.Service
     /// </summary>
     /// <param name="stuId"></param>
     /// <returns></returns>
-    public FileDTO GetByStuId(String stuId)
+    public List<FileDTO> GetByStuId(String stuId)
     {
-      Models.File file = db.Files.SingleOrDefault(C => (C.FileId == stuId));
-      ModelsDTO.FileDTO dto = new ModelsDTO.FileDTO();
-      mapper.Map(file, dto);
+      IQueryable<File> list = db.Files.Where(c => c.StuId != null);
+      if (!String.IsNullOrEmpty(stuId))
+      {
+        list = list.Where(c => c.StuId.Contains(stuId));
+      }
+      List<FileDTO> listDTO = new List<FileDTO>();
+      mapper.Map(list.ToList(), listDTO);
 
-      return dto;
+      return listDTO;
     }
 
   }

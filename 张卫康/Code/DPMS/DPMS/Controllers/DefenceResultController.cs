@@ -96,7 +96,7 @@ namespace DPMS.Controllers
     /// <param name="teachId"></param>
     /// <returns></returns>
     [HttpGet]
-    [Route("DAll")]
+    [Route("DAll/{teachId}")]
     public IActionResult GetAll([FromQuery] String teachId)
     {
       try
@@ -111,7 +111,7 @@ namespace DPMS.Controllers
     }
 
     /// <summary>
-    /// 查询学生学号查询文件信息(一个学号一条信息）
+    /// 按学生学号查询文件信息(一个学号一条信息）
     /// </summary>
     /// <param name="stuId"></param>
     /// <returns></returns>
@@ -126,5 +126,7 @@ namespace DPMS.Controllers
       else
         return NotFound();//404
     }
+
+
   }
 }
