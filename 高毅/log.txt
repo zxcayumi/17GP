@@ -107,3 +107,70 @@ if __name__ == '__main__:
         data = data headers = headers cookies = cookies )
         result = json.loads(res.text)(转换成字典类型）
         print(result['status']  返回状态 success/
+21.4.18
+复习了Sql语句以及C#操作数据库
+添加：
+INSERT INTO Student(, , , ) VALUE( , , , )
+修改：
+UPDATE Student SET ***= '***' WHERE *** ='***'
+删除：
+DELETE FROM Student WHERE ***='***'
+查询：
+select * from Student
+
+
+ADO.NET(Connection DML(INSERT UPDATE DELETE)  DQL(SELECT)
+引用工具箱
+using System.Data;
+右键项目-->管理包
+SQL server数据库-->System.Data.SqlClient
+public static void ConnectionTest()
+{  
+String = connString = "";
+Sqlconnection conn = new SqlConnection();//建立通道
+   try
+   {   conn.Open();//打开
+       Console.WriteLine(“连接已打开”); 
+       //具体活动
+  }
+  catch (Except ex)
+  {
+     Console.WriteLine(ex.Message);
+  }
+  finally
+  {
+      conn.Close();//关闭道路
+      Console.WriteLine(“连接已关闭”)
+  }
+}
+
+using (Sqlconnection conn = new SqlConnection())
+{
+  conn.Open();
+
+}
+//using生命周期结束时会自动关闭connection
+
+
+String中"":
+Data Source=.;(数据库地址是.为本机)
+Initial Catalog=***(具体连接哪一个数据库)
+User ID =***(用户名)
+Password=***(密码)
+Pooling=False
+
+
+利用Builder()来连接数据库
+pulic static void ConnectionTest1()
+{
+  SqlconnectionStringBulider bulider = new SqlconnectionStringBuilder();
+  bulider.DataSource=".";
+  bulider.***="***";
+  bulider.***="***";
+  bulider.Pooling = false;(数据库连接池)
+
+
+  SqlConnection conn = new SqlConnection();
+  conn.ConnectionString = builder.ConnectionString;
+  conn.Open();
+}
