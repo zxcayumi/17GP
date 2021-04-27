@@ -8,6 +8,8 @@ using System.Threading.Tasks;
 
 namespace DPMS.Controllers
 {
+  [ApiController]
+  [Route("Student")]
   public class StudentController : Controller
   {
     private IServices.IStudentService s;

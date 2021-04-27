@@ -7,10 +7,9 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace DPMS.Models
 {
-  [Table("Defence")]
+  [Table("DefenceNote")]
   public partial class DefenceNote
     {
-        public int SystemId { get; set; }
 
         [Key]
         public string NoteId { get; set; }
@@ -29,5 +28,6 @@ namespace DPMS.Models
         public virtual Defence Defence { get; set; }
         public virtual Student Stu { get; set; }
         public virtual Teacher Teach { get; set; }
+
     }
 }

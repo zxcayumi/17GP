@@ -16,7 +16,6 @@ namespace DPMS.Models
             DefenceResults = new HashSet<DefenceResult>();
         }
 
-        public int SystemId { get; set; }
 
         [Key]
         public string DefenceId { get; set; }

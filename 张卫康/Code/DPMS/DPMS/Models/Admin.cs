@@ -10,9 +10,6 @@ namespace DPMS.Models
   [Table("Admin")]
   public partial class Admin
     {
-      
-        public int SystemId { get; set; }
-
         [Key]
         public string AdminId { get; set; }
         public string Email { get; set; }

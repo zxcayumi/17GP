@@ -16,6 +16,6 @@ namespace DPMS.IServices
 
     List<FileDTO> GetByFileName(string fileName);
 
-    ModelsDTO.FileDTO GetByStuId(String stuId);
+    List<FileDTO> GetByStuId(String stuId);
   }
 }
