@@ -174,3 +174,6 @@ pulic static void ConnectionTest1()
   conn.ConnectionString = builder.ConnectionString;
   conn.Open();
 }
+
+解决了自动获取图片验证码的问题
+通过循环登录解决登录问题
