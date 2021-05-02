@@ -8,3 +8,172 @@
 2021.3.14
 1、下载微信机器人所需Python版本以及第三方库
 2、编写用二维码登录的界面。
+近期爬虫重点：
+requests.get(url = '' ,params={'key' = 'value', })给服务器传输内容）
+requsets.post(url= '',data = {'key' = 'value'})
+get请求：请求地址和请求参数之间用?分隔
+方法一：requests.get(url = '***?**' )
+方法二：requests.get(url = '' ,params={'key' = 'value', })
+1.请求地址：
+2.请求参数：
+
+服务器返回值为response类
+
+[200]（成功）
+[400] [404]（失败）
+
+res.text(输出返回网页的html代码)
+html编码存在网页head里(html-->head-->meta)
+
+
+编码问题 必须与网站编码方式一致。
+User-Agent可以伪装成别的浏览器
+headers = {'   '}
+res = request.get('          ',headers = headers)
+                             请求地址  头部信息
+
+数据清洗：从杂乱无章的数据中提取所需的内容。
+实现方式：
+1.正则表达式
+(1)获取html代码
+(2)定义正则表达式模式(需要提前查看网页html格式)
+pattern = r'<div class="">.*<ul>(.*)<ul/>
+"."表示任意字符 “*”表示0=次或多次重复 用()获得一个组
+re.search() 找到一个
+re.findall() 找到多个
+pattern分为1贪婪模式和2非贪婪模式
+1:开头和最后的结尾匹配(.*)
+2:只要能匹配即提取(.*?)
+(注意内容：所有不确定的数据都用.*表示所需数据用()表示)
+(3)提取内容
+result = re.search(pattern,res.text) 从res.text中匹配pattern规则，返回符合pattern规则的内容
+print(result.group(1))返回(.*)中的第一个组 
+
+输出序号:
+base = (page-1)*20
+for i in result:
+    print('**%s:%s'  % (result.index(i) +1, i))  输出:**1：i
+获取多页数据:
+定义一个函数来获取其他页页数
+def search(page)
+	.....
+	.....
+	.....
+
+if __name__ == '__main__:
+	for i in range(5):
+		search(i+1)
+#base = (page-1)*20第一页为0*20 即为原数；
+
+
+
+1.模拟登录    2.自动登录（cookie）
+1.服务器验证登录消息(浏览器与服务器数据交换)
+    登陆时开发者工具--> Network-->XHR 传输哪些数据信息内容 
+    General ：1 登录服务地址  2 method：post
+    Form Data：Name
+    Request Headers ：1 Content-Type : -form- urlencoded 2 Cookie(存于本地的内容)
+    爬虫：组织好以下三方面的数据，发送给服务器(数据正确登录就会成功验证)
+    1传输的Data(Formdata)
+    2headers
+    3cookie(本地存储的信息)
+    Python库(requsets_html)
+    1用户填写的数据（模拟）formadata(用json格式传输）
+         data = {
+             “key”:"value"
+             “key”:"value"
+             “key”:"value"
+             “key”:"value"
+             “key”:"value"
+        }
+    2 headers请求头部内容（也是用json格式传输）
+        headers = {
+         	    “key”:"value"
+	    “key”:"value"
+	    “key”:"value"
+ 	    “key”:"value"
+	    “key”:"value"
+	    "cookie": 复制即可 记得加转义符号
+        }
+
+     3cookie
+        str = “cookie”
+        cookies = {item.split('=')[0]: item.split('=')[1]  for item in str.split(';')} (字符串转换成字典形式)	
+        
+
+
+        session = requests_html.HTMLSession()
+        res = session.post ('https://uap.sdwu.edu.cn/lyuapServer/login',
+        data = data headers = headers cookies = cookies )
+        result = json.loads(res.text)(转换成字典类型）
+        print(result['status']  返回状态 success/
+21.4.18
+复习了Sql语句以及C#操作数据库
+添加：
+INSERT INTO Student(, , , ) VALUE( , , , )
+修改：
+UPDATE Student SET ***= '***' WHERE *** ='***'
+删除：
+DELETE FROM Student WHERE ***='***'
+查询：
+select * from Student
+
+
+ADO.NET(Connection DML(INSERT UPDATE DELETE)  DQL(SELECT)
+引用工具箱
+using System.Data;
+右键项目-->管理包
+SQL server数据库-->System.Data.SqlClient
+public static void ConnectionTest()
+{  
+String = connString = "";
+Sqlconnection conn = new SqlConnection();//建立通道
+   try
+   {   conn.Open();//打开
+       Console.WriteLine(“连接已打开”); 
+       //具体活动
+  }
+  catch (Except ex)
+  {
+     Console.WriteLine(ex.Message);
+  }
+  finally
+  {
+      conn.Close();//关闭道路
+      Console.WriteLine(“连接已关闭”)
+  }
+}
+
+using (Sqlconnection conn = new SqlConnection())
+{
+  conn.Open();
+
+}
+//using生命周期结束时会自动关闭connection
+
+
+String中"":
+Data Source=.;(数据库地址是.为本机)
+Initial Catalog=***(具体连接哪一个数据库)
+User ID =***(用户名)
+Password=***(密码)
+Pooling=False
+
+
+利用Builder()来连接数据库
+pulic static void ConnectionTest1()
+{
+  SqlconnectionStringBulider bulider = new SqlconnectionStringBuilder();
+  bulider.DataSource=".";
+  bulider.***="***";
+  bulider.***="***";
+  bulider.Pooling = false;(数据库连接池)
+
+
+  SqlConnection conn = new SqlConnection();
+  conn.ConnectionString = builder.ConnectionString;
+  conn.Open();
+}
+
+解决了自动获取图片验证码的问题
+通过循环登录解决登录问题

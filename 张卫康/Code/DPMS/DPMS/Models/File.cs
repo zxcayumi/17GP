@@ -1,18 +1,21 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 #nullable disable
 
 namespace DPMS.Models
 {
-    public partial class File
+  [Table("File")]
+  public partial class File
     {
         public File()
         {
             Defences = new HashSet<Defence>();
         }
 
-        public int SystemId { get; set; }
+        [Key]
         public string FileId { get; set; }
         public string StuId { get; set; }
         public string DefenceId { get; set; }

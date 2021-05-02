@@ -11,42 +11,20 @@ namespace DPMS.ModelsDTO
 
   public partial class DefenceResultDTO
     {
-    [MaxLength(50)]
-    public int SystemId { get; set; }
 
-    [MaxLength(50)]
     [Key]
     public string ResultId { get; set; }
-
-    [MaxLength(50)]
+    public string DefenceId { get; set; }
     public string StuId { get; set; }
-
-    [MaxLength(50)]
     public string TeachId { get; set; }
-
-    [MaxLength(500)]
     public string EvaluateForTea { get; set; }
-
-    [MaxLength(500)]
     public string EvaluateForStu { get; set; }
-
-    [MaxLength(50)]
     public string Achievement { get; set; }
-
-
-
-
-    [MaxLength(500)]
     public string Memo { get; set; }
-
-    [MaxLength(50)]
     public string Status { get; set; }
-
     public DateTime? CreateTime { get; set; }
-
     public DateTime? UpdateTime { get; set; }
-
-    [MaxLength(50)]
     public string Modifier { get; set; }
-    }
+
+  }
 }

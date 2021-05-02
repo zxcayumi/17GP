@@ -1,11 +1,15 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 #nullable disable
 
 namespace DPMS.Models
 {
-    public partial class Student
+  [Table("Student")]
+
+  public partial class Student
     {
         public Student()
         {
@@ -13,7 +17,7 @@ namespace DPMS.Models
             DefenceResults = new HashSet<DefenceResult>();
         }
 
-        public int SystemId { get; set; }
+        [Key]
         public string StuId { get; set; }
         public string Email { get; set; }
         public string Password { get; set; }

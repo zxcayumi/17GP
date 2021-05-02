@@ -1,13 +1,17 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 #nullable disable
 
 namespace DPMS.Models
 {
-    public partial class DefenceNote
+  [Table("DefenceNote")]
+  public partial class DefenceNote
     {
-        public int SystemId { get; set; }
+
+        [Key]
         public string NoteId { get; set; }
         public string DefenceId { get; set; }
         public string StuId { get; set; }
@@ -24,5 +28,6 @@ namespace DPMS.Models
         public virtual Defence Defence { get; set; }
         public virtual Student Stu { get; set; }
         public virtual Teacher Teach { get; set; }
+
     }
 }

@@ -11,39 +11,18 @@ namespace DPMS.ModelsDTO
 
   public partial class FileAddDTO
   {
-    [MaxLength(50)]
-    public int SystemId { get; set; }
 
-    [MaxLength(50)]
     [Key]
     public string FileId { get; set; }
-
-    [MaxLength(50)]
-    public string FileName { get; set; }
-
-    [MaxLength(50)]
     public string StuId { get; set; }
-
-    [MaxLength(50)]
     public string DefenceId { get; set; }
-
-    [MaxLength(500)]
+    public string FileName { get; set; }
     public string Url { get; set; }
-
-
-
-
-    [MaxLength(500)]
     public string Memo { get; set; }
-
-    [MaxLength(50)]
     public string Status { get; set; }
-
-        public DateTime? CreateTime { get; set; }
-
-        public DateTime? UpdateTime { get; set; }
-
-    [MaxLength(50)]
+    public DateTime? CreateTime { get; set; }
+    public DateTime? UpdateTime { get; set; }
     public string Modifier { get; set; }
-    }
+
+  }
 }

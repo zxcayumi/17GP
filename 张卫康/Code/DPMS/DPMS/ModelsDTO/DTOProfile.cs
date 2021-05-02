@@ -21,33 +21,35 @@ namespace DPMS.ModelsDTO
       CreateMap<DefenceUpdateDTO,Models.Defence>();
       CreateMap<DefenceAddDTO,Models.Defence>();
 
-      CreateMap<Models.Defence, DefenceDTO>();
-      CreateMap<DefenceUpdateDTO, Models.Defence>();
-      CreateMap<DefenceAddDTO, Models.Defence>();
+      CreateMap<Models.DefenceNote, DefenceNoteDTO>();
+      CreateMap<DefenceNoteUpdateDTO, Models.DefenceNote>();
+      CreateMap<DefenceNoteAddDTO, Models.DefenceNote>();
 
-      CreateMap<Models.Defence, DefenceDTO>();
-      CreateMap<DefenceUpdateDTO, Models.Defence>();
-      CreateMap<DefenceAddDTO, Models.Defence>();
+      CreateMap<Models.DefenceResult, DefenceResultDTO>();
+      CreateMap<DefenceResultUpdateDTO, Models.DefenceResult>();
+      CreateMap<DefenceResultAddDTO, Models.DefenceResult>();
 
-      CreateMap<Models.Defence, DefenceDTO>();
-      CreateMap<DefenceUpdateDTO, Models.Defence>();
-      CreateMap<DefenceAddDTO, Models.Defence>();
+      CreateMap<Models.File, FileDTO>();
+      CreateMap<FileUpdateDTO, Models.File>();
+      CreateMap<FileAddDTO, Models.File>();
 
-      CreateMap<Models.Defence, DefenceDTO>();
-      CreateMap<DefenceUpdateDTO, Models.Defence>();
-      CreateMap<DefenceAddDTO, Models.Defence>();
+      CreateMap<Models.Recorder, RecorderDTO>();
+      CreateMap<RecorderUpdateDTO, Models.Recorder>();
+      CreateMap<RecorderAddDTO, Models.Recorder>();
 
-      CreateMap<Models.Defence, DefenceDTO>();
-      CreateMap<DefenceUpdateDTO, Models.Defence>();
-      CreateMap<DefenceAddDTO, Models.Defence>();
+      CreateMap<Models.Student, StudentDTO>();
+      CreateMap<StudentUpdateDTO, Models.Student>();
+      CreateMap<StudentAddDTO, Models.Student>();
 
-      CreateMap<Models.Defence, DefenceDTO>();
-      CreateMap<DefenceUpdateDTO, Models.Defence>();
-      CreateMap<DefenceAddDTO, Models.Defence>();
+      CreateMap<Models.Teacher, TeacherDTO>();
+      CreateMap<TeacherUpdateDTO, Models.Teacher>();
+      CreateMap<TeacherAddDTO, Models.Teacher>();
 
-      CreateMap<Models.Defence, DefenceDTO>();
-      CreateMap<DefenceUpdateDTO, Models.Defence>();
-      CreateMap<DefenceAddDTO, Models.Defence>();
+      CreateMap<Models.ViewDefenceStu, ViewDefenceStuDTO>();
+      CreateMap<Models.ViewNoteDefence, ViewNoteDefenceDTO>();
+      CreateMap<Models.ViewStuResult, ViewStuResultDTO>();
+
+
     }
   }
 }

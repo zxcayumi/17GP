@@ -1,0 +1,93 @@
+
+
+
+import json
+with open('D:\Python\image\\via_export_json.json','r',encoding='utf8')as fp:
+    json_data = json.load(fp)
+    family = json_data['10.1.1.1.2018-4.png1021424']['regions']
+
+for i in family:
+    a=i['shape_attributes']
+    print('x:'+str(list(a.values())[list(a.keys()).index('x')]))
+    print('y:'+str(list(a.values())[list(a.keys()).index('y')]))
+    print('height:'+str(list(a.values())[list(a.keys()).index('height')]))
+    print('width:'+str(list(a.values())[list(a.keys()).index('width')]))
+    print("   ")
+    # print(json_data['10.1.1.1.2018-4.png1021424']['regions'])
+
+
+    # print('这是文件中的json数据：',json_data)
+    # print('这是读取到文件数据的数据类型：', type(json_data))
+
+
+
+
+
+
+
+
+import requests
+if __name__=='__main__':
+    url="https://www.toutiao.com"
+    respone = requests.get(url)
+    res = respone
+    res.encoding = 'utf-8'
+    print(res.text)
+    
+
+
+
+
+
+
+
+
+import re
+import requests
+import json
+import requests_html
+#爬取页面：http://kyxt.sdwu.edu.cn/business/product/productView.do?actionType=init
+#登录服务地址:https://uap.sdwu.edu.cn/lyuapServer/login
+#method:post
+#username: 34052
+#password: 157734
+#captcha: 
+#cookie: JSESSIONID=F8319B8781B4221376A704F74DF1E0B6
+
+
+#目标url：http://kyxt.sdwu.edu.cn/business/product/productView.do?actionType=init
+
+data = {
+    "username":"34052",
+    "password":"157734",
+    "key":"value",
+    "warn":"true",
+    "lt":"LT-235777-5kamHyjz7fDJBG7RYxHwXBc50hpNuw-cas01.example.org",
+    "execution":"e5s1",
+    "_eventId":"submit",
+    "submit": "登录",
+        }
+headers = {
+    "content-type": "application/x-www-form-urlencoded",
+    "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/89.0.4389.114 Safari/537.36 Edg/89.0.774.68",
+    "cookie":"JSESSIONID=A14113C7B0D7B6E1710B8B6CFAFFD92A"   
+    }
+session = requests_html.HTMLSession()
+res = session.post ('https://uap.sdwu.edu.cn/lyuapServer/login',data = data,headers = headers)
+result = json.loads(res.text)
+
+res1 = requests.get('http://kyxt.sdwu.edu.cn/business/product/productView.do?actionType=init')
+pattern = r'<table class.*?><tbody>(.*?)</tbody>'
+result1 = re.search(pattern, res1.text)
+text = result1.group(1)
+
+pattern = r'<td.*?><a.*?>(.*?)</a></td>'
+result2 = re.findall(pattern, text)
+
+pattern =r'<td="9%">(.*)</td>'
+result3 = re.findall(pattern, text)
+for item in result2:
+    print('成果%s:%s'%(result2.index(item)+1,item))
+
+for i in result3:
+    print('成果类型%s:%s'%(result3.index(i)+1,i))

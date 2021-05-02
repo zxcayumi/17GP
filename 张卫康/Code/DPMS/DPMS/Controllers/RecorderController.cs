@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 namespace DPMS.Controllers
 {
   [ApiController]
-  [Route("[Controller]")]
+  [Route("Recorder")]
   public class RecorderController : Controller
   {
     private IServices.IRecorderService s;
@@ -60,7 +60,7 @@ namespace DPMS.Controllers
     /// <param name="recorderId"></param>
     /// <returns></returns>
     [HttpDelete]
-    [Route("{adminId}")]
+    [Route("{recorderId}")]
     public IActionResult Delete(String recorderId)
     {
       Models.Recorder model = new Models.Recorder();
@@ -95,7 +95,7 @@ namespace DPMS.Controllers
     /// <param name="realName"></param>
     /// <returns></returns>
     [HttpGet]
-    [Route("RAll")]
+    [Route("RAll/{realName}")]
     public IActionResult GetAll([FromQuery] String realName)
     {
       try

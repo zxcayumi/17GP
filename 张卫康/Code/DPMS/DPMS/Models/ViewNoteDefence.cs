@@ -1,11 +1,14 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations.Schema;
 
 #nullable disable
 
 namespace DPMS.Models
 {
-    public partial class ViewNoteDefence
+  [Table("ViewNoteDefence")]
+
+  public partial class ViewNoteDefence
     {
         public string DefenceId { get; set; }
         public string DefenceName { get; set; }
@@ -13,5 +16,6 @@ namespace DPMS.Models
         public string Problem { get; set; }
         public string Answer { get; set; }
         public string RealName { get; set; }
+
     }
 }

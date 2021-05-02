@@ -1,13 +1,16 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 #nullable disable
 
 namespace DPMS.Models
 {
-    public partial class Recorder
+  [Table("Recorder")]
+  public partial class Recorder
     {
-        public int SystemId { get; set; }
+        [Key]
         public string RecorderId { get; set; }
         public string Email { get; set; }
         public string Password { get; set; }
@@ -22,5 +25,6 @@ namespace DPMS.Models
         public DateTime? CreateTime { get; set; }
         public DateTime? UpdateTime { get; set; }
         public string Modifier { get; set; }
+
     }
 }
